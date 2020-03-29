@@ -1,2 +1,2 @@
 # SMART
-Rest API server
+SMART CMS
