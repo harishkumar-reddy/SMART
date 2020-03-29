@@ -1,0 +1,6 @@
+<footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+        <b>Version</b> {{ footerdata.version is defined? footerdata.version : '2.0' }}
+    </div>
+    <strong>Copyright &copy; {{ footerdata.copyright_year is defined? footerdata.copyright_year : '2020' }} <a href="{{ footerdata.copyright_link is defined? footerdata.copyright_link : '/' }}">{{ footerdata.copyright_text is defined? footerdata.copyright_text : 'CilckWT' }}</a>.</strong> All rights reserved.
+</footer>

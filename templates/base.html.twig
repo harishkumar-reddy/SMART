@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{ include("./Layout/meta.html.twig", {'title': "CWT Gateway"}) }}
+    {{ include('./Layout/styles.html.twig') }}
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+<!-- Site wrapper -->
+<div class="wrapper">
+    <!-- Navbar -->
+    {{ include('./Layout/topnavbar.html.twig') }}
+
+    <!-- Main Sidebar Container -->
+    {{ include('./Layout/leftnavbar.html.twig', {'title': "SMART"}) }}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header mb-2">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 id="screen_title"></h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right" id="screen_breadcrumb"></ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content" id="content">
+            <div class="container-fluid">
+                {% block body %}{% endblock %}
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    {{ include('./Layout/footer.html.twig', {'footerdata': footerdat is defined? footerdat : ""}) }}
+    {{ include('./Layout/models.html.twig') }}
+    <!-- Control Sidebar -->
+    {{ include('./Layout/usertray.html.twig') }}
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+{{ include('./Layout/scripts.html.twig') }}
+<!-- AdminLTE for demo purposes -->
+{#<script src="{{ asset('assets/js/demo.js') }}"></script>#}
+</body>
+</html>

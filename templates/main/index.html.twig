@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+    <script>
+        setTimeout(function () {
+            $(document).ready(function (e) {
+                $('#dashboard_link').click();
+            });
+        }, 500);
+
+    </script>
+{% endblock %}

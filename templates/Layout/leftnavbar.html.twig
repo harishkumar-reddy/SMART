@@ -1,0 +1,87 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="{{ link is defined? link : '/' }}" class="brand-link hashelp" data-placement="bottom" data-help-title='Logo' data-help-msg='Logo of the application. It will allow to go home page by clicking on this logo.'>
+        <img src="{{ asset('assets/img/AdminLTELogo.png') }}"
+             alt="AdminLTE Logo"
+             class="brand-image img-circle elevation-3"
+             style="opacity: .8">
+        <span class="brand-text font-weight-light">{{ title }}</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item hashelp" id="dashboard_link" data-placement="right" data-help-title="Dashboard" data-help-msg="Click to launch the dashboard screen.">
+                    <a href="/dashboard" class="nav-link" data-breadcrumb="[{'title':'Home', 'link':'/'}]">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+                </li>
+                {#<li class="nav-header">Modules</li>#}
+                {% if menuitems is defined %}
+                    {% for item in menuitems %}
+                        <li class="nav-item  hashelp" data-placement="right" data-help-title="{{ item.help_title is defined? item.help_title : 'Help' }}" data-help-msg="{{ item.help_message is defined ? item.help_message : 'Help text not available' }}">
+                            <a href="{{ item.sub_items is defined?  '#' : item.link}}" class="nav-link" {{ item.sub_items is not defined?  " data-breadcrumb=\"[{'title':'Home', 'link':'/'},{'title':'"~ item.label | title ~"', 'link':'"~ item.link ~"'}]\" "}}>
+                                <i class="nav-icon fas {{ item.icon is defined?  item.link : 'fa-circle' }}"></i>
+                                <p>
+                                    {{ item.label | title }}
+                                    {% if item.sub_items is defined %}
+                                        <i class="right fas fa-angle-left"></i>
+                                    {% endif %}
+                                </p>
+                            </a>
+                            {% if item.sub_items is defined %}
+                                <i class="right fas fa-angle-left"></i>
+                            {% endif %}
+                        </li>
+                        {% if item.sub_items is defined %}
+                            <ul class="nav nav-treeview">
+                                {% for sub_item in item.sub_items %}
+                                    <li class="nav-item hashelp" data-placement="right" data-help-title="{{ sub_item.help_title is defined? sub_item.help_title : 'Help' }}" data-help-msg="{{ sub_item.help_message is defined ? sub_item.help_message : 'Help text not available' }}">
+                                        <a href="{{ sub_item.link}}" class="nav-link" data-breadcrumb="[{'title':'Home', 'link':'/'},{'title':'{{ item.label | title }}', 'link':'#'},{'title':'{{ sub_item.label | title }}', 'link':'#'}]">
+                                            <i class="far {{ sub_item.icon is defined?  sub_item.link : 'fa-circle' }} nav-icon"></i>
+                                            <p>{{ sub_item.label | title }}</p>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {#<li class="nav-header">Studio</li>#}
+                <li class="nav-item has-treeview hashelp" data-placement="right" data-help-title='Utility' data-help-msg="Utility module will allow you to mange application and its modules.">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-boxes"></i>
+                        <p>
+                            Utility
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="../../index.html" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <span>Dashboard v1</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item hashelp" data-placement="right" data-help-title='Settings' data-help-msg="Change application core settings.">
+                    <a href="/settings" class="nav-link" data-breadcrumb="[{'title':'Home', 'link':'/'},{'title':'Settings', 'link':'#'}]">
+                        <i class="nav-icon fas fa-tools"></i>
+                        <p>
+                            Settings
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

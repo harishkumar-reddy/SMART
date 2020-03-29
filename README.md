@@ -1,0 +1,2 @@
+# SMART
+Rest API server
